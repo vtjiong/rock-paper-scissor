@@ -11,7 +11,7 @@ function getComputerChoice(){
             return("paper");
             break;
         case 2:
-             return ("scissor")
+             return ("scissors")
             break;
     }
 }
@@ -19,15 +19,15 @@ function getComputerChoice(){
 function one_Round(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection == computerSelection){
-        return "Its a tie";
+        return playerSelection +" = "+computerSelection+". Its a tie";
     } else if (playerSelection == "rock" && computerSelection=="scissors"){;
-        return "You Win :)"
+        return playerSelection+" is better than "+computerSelection+". You Win :)"
     } else if (playerSelection == "scissors" && computerSelection=="paper"){;
-        return "You Win :)"
+        return playerSelection+" is better than "+computerSelection+". You Win :)"
     } else if(playerSelection == "paper" && computerSelection=="rock"){;
-        return "You Win :)"
+        return playerSelection+" is better than "+computerSelection+". You Win :)"
     } else{
-        return "You Lost :("
+        return computerSelection+" is better than "+playerSelection+". You loss :("
     }
 }
 
@@ -36,21 +36,21 @@ function game(){
     let computerScore=0;
     let count=0;
     while(count<10){;
-    let playerSelection = prompt("Enter your choice");
-    let computerSelection=getComputerChoice();
     if (playerScore == 5|| computerScore==5){
         break;
     }else{
-        let result=one_Round(playerSelection,computerSelection)
-        console.log(result);
-        if (result =="You Win :)"){
-            playerScore++;
-            count +=1;
-        }else if (result == "You Lost :("){
-            computerScore++;
-            count+=1;
-        } else{
-            continue;
+    let playerSelection = prompt("Enter your choice");
+    let computerSelection=getComputerChoice();
+    let result=one_Round(playerSelection,computerSelection)
+    console.log(result);
+    if (result.slice(-2)==":)"){
+        playerScore++;
+        count +=1;
+    }else if (result.slice(-2)==":("){
+        computerScore++;
+        count+=1;
+    } else{
+        continue;
         }
       }
     }
